@@ -9,7 +9,7 @@ public class ArrayLeftRotation {
 
         int[] b = new int[length];
 
-        int mod = 5 % length;
+        int mod = 3 % length;
         System.out.println(mod + " : mod");
         for(int i = 0; i < length; ++i) {
             System.out.print(a[(i + mod) % length]

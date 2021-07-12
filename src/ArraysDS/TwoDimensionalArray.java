@@ -60,7 +60,7 @@ public class TwoDimensionalArray {
             }
         }
         System.out.println(maxSum);
-
+        // Max Sum of hourglass
 
     }
 
