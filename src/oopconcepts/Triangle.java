@@ -3,10 +3,10 @@ package oopconcepts;
  * ketnakhalasi created on 7/12/21
  * */
 
-public class Triangle {
+public class Triangle implements Shape {
     public Triangle() {
     }
-
+    @Override
     public void draw() {
         System.out.println("Draw a default triangle");
     }
