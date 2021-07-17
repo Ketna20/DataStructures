@@ -11,6 +11,11 @@ public class Triangle implements Shape {
         System.out.println("Draw a default triangle");
     }
 
+    @Override
+    public double area() {
+        return 0;
+    }
+
     public void draw(String color) {
         System.out.println("Draw a triangle of color " + color);
     }
