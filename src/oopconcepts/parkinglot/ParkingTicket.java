@@ -8,13 +8,12 @@ import java.util.List;
 
 public final class ParkingTicket {
     private Vehicle vehicle;
-    private final LocalDateTime releaseDate;
+    private LocalDateTime releaseDate;
     private final List<String> parkingSpotLabels;
     private final String floorName;
 
-    public ParkingTicket(Vehicle vehicle, LocalDateTime releaseDate, List<String> parkingSpotLabels, String floorName) {
+    public ParkingTicket(Vehicle vehicle, List<String> parkingSpotLabels, String floorName) {
         this.vehicle = vehicle;
-        this.releaseDate = releaseDate;
         this.parkingSpotLabels = parkingSpotLabels;
         this.floorName = floorName;
     }

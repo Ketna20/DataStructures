@@ -4,6 +4,7 @@ package oopconcepts.parkinglot;
  * */
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ParkingFloor {
     private final String floorName;
@@ -37,12 +38,24 @@ public class ParkingFloor {
     }
 
     private void registerParkingTicket(ParkingTicket parkingTicket) {
+        this.parkingTickets.add(parkingTicket);
+    }
+
+    private void unRegisterParkingTicket(ParkingTicket parkingTicket) {
+        this.parkingTickets.remove(parkingTicket);
     }
 
     private ParkingTicket releaseParkingTicket(Vehicle vehicle, List<ParkingSpot> parkingSpots) {
+        List<String> spotsLabels = parkingSpots.stream()
+                .map(ParkingSpot::getLabel)
+                .collect(Collectors.toList());
+        return new ParkingTicket(vehicle, spotsLabels, this.floorName);
     }
 
     private void assignVehicleToParkingSpots(List<ParkingSpot> parkingSpots, Vehicle vehicle) {
+            for(ParkingSpot ps : parkingSpots) {
+                ps.assignVehicle(vehicle);
+            }
     }
 
     private List<ParkingSpot> findSpotsToFitVehicle(Vehicle vehicle) {
@@ -110,10 +123,15 @@ public class ParkingFloor {
         return 0;
     }
 
-    private void unRegisterParkingTicket(ParkingTicket parkingTicket) {
-    }
+
 
     private ParkingTicket findParkingTicket(Vehicle vehicle) {
+        for(ParkingTicket pt : parkingTickets) {
+            if(pt.getVehicle().equals(vehicle)) {
+                return pt;
+            }
+        }
+        return null;
     }
 
     public String getFloorName() {
