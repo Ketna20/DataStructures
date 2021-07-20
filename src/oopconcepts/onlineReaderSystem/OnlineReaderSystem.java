@@ -41,4 +41,49 @@ public class OnlineReaderSystem {
         }
     }
 
+    public void nextPage() {
+        displayer.nextPage();
+    }
+
+    public void previousPage() {
+        displayer.previousPage();
+    }
+
+    public void addReader(Reader reader) {
+        readerManager.addReader(reader);
+    }
+
+    public boolean deleteReader(Reader reader) {
+        if(!reader.equals(this.reader)){
+            return readerManager.removeReader(reader);
+        }
+        return false;
+    }
+
+    public void addBook(Book book) {
+        library.addBook(book);
+    }
+
+    public boolean deleteBook(Book book) {
+        if(!book.equals(this.book)){
+            return library.removeBook(book);
+        }
+        return false;
+    }
+
+    public Reader getReader() {
+        return reader;
+    }
+
+    public void setReader(Reader reader) {
+        this.reader = reader;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
 }

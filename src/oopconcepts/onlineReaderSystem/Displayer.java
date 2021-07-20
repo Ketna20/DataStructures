@@ -23,6 +23,11 @@ public class Displayer {
         page = book.fetchPage(++pageNumber);
         refreshPage();
     }
+    protected void previousPage() {
+        page = book.fetchPage(--pageNumber);
+        refreshPage();
+    }
+
 
     private void refreshPage() {
         System.out.println("Reading page number : " + pageNumber + " content " + page);
