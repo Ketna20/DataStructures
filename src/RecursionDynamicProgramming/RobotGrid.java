@@ -45,7 +45,7 @@ public class RobotGrid {
         visited.forEach(System.out::println);
     }
 
-    // Plain recursion
+    // Plain recursion = O(2^m+n)
     public static boolean findPath(int m, int n, boolean[][] maze, Set<Point> path) {
         if(maze == null || path == null) {
             throw new IllegalArgumentException("Path and maze cannot be null.");
@@ -68,7 +68,7 @@ public class RobotGrid {
         return false;
     }
 
-    //Memoization approach
+    //Memoization approach = O(mn)
     public static boolean computePath(int m, int n, boolean[][] maze, Set<Point> path, Set<Point> visitFailed) {
         if(maze == null || path == null || visitFailed == null) {
             throw new IllegalArgumentException("Path and maze and visitFailed cannot be null.");
