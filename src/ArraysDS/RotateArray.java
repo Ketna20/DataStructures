@@ -11,7 +11,7 @@ public class RotateArray {
         int rotation = 2;
 
         leftRotate(arr, rotation, n);
-
+        System.out.println("rotation by 2");
         for(int i=0; i<arr.length; i++){
             System.out.println(arr[i]);
         }
