@@ -5,6 +5,9 @@ package trees.traversals;
 
 import trees.BinaryTree;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class TraversalMain {
     public static void main(String[] args) {
         BinaryTreeTraversals<Integer> bt = new BinaryTreeTraversals<>();
@@ -17,16 +20,43 @@ public class TraversalMain {
         bt.insert(44);
         System.out.println("Root " + bt.root() + " and Nodes: " + bt.size());
 
+//        System.out.println("Traversal LEVEL : ");
+//        bt.print(TraversalOrder.LEVEL);
+//
+//        System.out.println("Traversal PRE : ");
+//        bt.print(TraversalOrder.PRE);
+//
+//        System.out.println("Traversal POST : ");
+//        bt.print(TraversalOrder.POST);
+//
+//        System.out.println("Traversal IN : ");
+//        bt.print(TraversalOrder.IN);
+
+        //traversals as list
+
+        List<Integer> levelOrderList = new LinkedList<>();
+        levelOrderList = bt.traverseAsList(TraversalOrder.LEVEL);
         System.out.println("Traversal LEVEL : ");
-        bt.print(TraversalOrder.LEVEL);
-
+        for (int i : levelOrderList) {
+            System.out.println(" " + i);
+        }
+        List<Integer> preOrderList = new LinkedList<>();
+        preOrderList = bt.traverseAsList(TraversalOrder.PRE);
         System.out.println("Traversal PRE : ");
-        bt.print(TraversalOrder.PRE);
+        for (int i : preOrderList) {
+            System.out.println(" " + i);
+        }
 
+        List<Integer> postOrderList = bt.traverseAsList(TraversalOrder.POST);
         System.out.println("Traversal POST : ");
-        bt.print(TraversalOrder.POST);
+        for (int i : postOrderList) {
+            System.out.println(" " + i);
+        }
 
         System.out.println("Traversal IN : ");
-        bt.print(TraversalOrder.IN);
+        List<Integer> inOrderList= bt.traverseAsList(TraversalOrder.IN);
+        for (int i : postOrderList) {
+            System.out.println(" " + i);
+        }
     }
 }

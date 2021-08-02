@@ -4,9 +4,9 @@ package trees.traversals;
  * */
 
 
-import java.util.ArrayDeque;
-import java.util.LinkedList;
-import java.util.Queue;
+import sun.awt.image.ImageWatched;
+
+import java.util.*;
 
 public class BinaryTreeTraversals<T> {
     private Node root = null;
@@ -129,6 +129,82 @@ public class BinaryTreeTraversals<T> {
             default:
                 throw new IllegalArgumentException("Unrecognized traversal order");
         }
+    }
+
+    //traverse In-Order as List
+    public void traverseInOrderAsList(Node node, List<T> treeList) {
+        if(node != null) {
+            traverseInOrderAsList(node.left, treeList);
+            treeList.add((T) node.element);
+            traverseInOrderAsList(node.right, treeList);
+        }
+    }
+
+    //traverse Pre-Order as List
+    public void traversePreOrderAsList(Node node, List<T> treeList) {
+        treeList.add((T) node.element);
+        if(node.left != null) {
+            traversePreOrderAsList(node.left, treeList);
+        }
+        if(node.right != null) {
+            traversePreOrderAsList(node.right, treeList);
+        }
+    }
+
+    //traverse Post-Order as List
+    public void traversePostOrderAsList(Node node, List<T> treeList) {
+        if(node.left != null) {
+            traversePostOrderAsList(node.left, treeList);
+        }
+        if(node.right != null) {
+            traversePostOrderAsList(node.right, treeList);
+        }
+
+        treeList.add((T) node.element);
+    }
+
+    //traverse Level Order as list
+    public void traverseLevelOrderAsList(Node node, List<T> treeList) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(node);
+
+        while(!queue.isEmpty()) {
+            Node current = queue.poll();
+            treeList.add((T) current.element);
+
+            if(current.left != null) {
+                queue.add(current.left);
+            }
+
+            if(current.right != null) {
+                queue.add(current.right);
+            }
+        } // end while
+    }
+
+    public List<T> traverseAsList(TraversalOrder traversalOrder) {
+        if(size() == 0) {
+            return Collections.emptyList();
+        }
+
+        List<T> treeList = new ArrayList<>(size());
+        switch(traversalOrder) {
+            case IN:
+                traverseInOrderAsList(root, treeList);
+                break;
+            case PRE:
+                traversePreOrderAsList(root, treeList);
+                break;
+            case POST:
+                traversePostOrderAsList(root, treeList);
+                break;
+            case LEVEL:
+                traverseLevelOrderAsList(root, treeList);
+                break;
+            default:
+                throw new IllegalArgumentException("Unrecognized Traversal order...");
+        }
+        return treeList;
     }
 
 }
