@@ -12,4 +12,16 @@ public class BinaryTree {
     public BinaryTree() {
         root = null;
     }
+
+    public boolean insert(int data) {
+        if(data == 0) {
+            return false;
+        }
+        if (root == null) {
+            root = new Node(data);
+            return true;
+        }
+
+        return false;
+    }
 }
