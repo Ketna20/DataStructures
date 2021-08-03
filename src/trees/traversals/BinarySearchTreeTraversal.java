@@ -47,4 +47,94 @@ public class BinarySearchTreeTraversal<T extends Comparable<T>> {
                ? contains(current.left, element)
                : contains(current.right, element);
     }
+
+    private Node delete(Node node, T element) {
+        if(node == null) {
+            return null;
+        }
+
+        if(element.compareTo((T) node.element) < 0) {
+            node.left = delete(node.left, element);
+        } else if (element.compareTo((T) node.element) > 0) {
+            node.right = delete(node.right, element);
+        }
+
+        if(element.compareTo((T) node.element) == 0) {
+            if(node.right == null) {
+                Node left = node.left;
+                node = null;
+                return left;
+            } else if(node.left == null) {
+                Node right = node.right;
+                node = null;
+                return right;
+            } else {
+                Node leftmost = findLeftmostNode(node.right);
+                node.element = leftmost.element;
+                node.right = delete(node.right, (T) node.element);
+            }
+        }
+        return node;
+    }
+    public boolean delete(T element) {
+        if(contains(element)) {
+            root = delete(root, element);
+            nodeCount--;
+
+            return true;
+        }
+        return false;
+    }
+
+    private Node findLeftmostNode(Node node) {
+        while(node.left != null) {
+            node = node.left;
+        }
+        return node;
+    }
+
+    private Node findRightmostNode(Node node) {
+        while (node.right != null) {
+            node = node.right;
+        }
+
+        return node;
+    }
+
+    public T root() {
+        if(root == null) {
+            return null;
+        }
+        return (T) root.element;
+    }
+
+    public T max() {
+        if(root == null) {
+            return null;
+        }
+        return (T) findRightmostNode(root).element;
+    }
+
+    public T min() {
+        if(root == null) {
+            return null;
+        }
+        return (T) findLeftmostNode(root).element;
+    }
+
+    public int size() {
+        return nodeCount;
+    }
+
+    private int height(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        return Math.max(height(node.left), height(node.right));
+    }
+
+    public int height() {
+        return height(root);
+    }
+
 }

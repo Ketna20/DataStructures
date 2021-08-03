@@ -6,7 +6,7 @@ package trees.traversals;
 public class Node<T> {
      Node left;
      Node right;
-     final T element;
+     T element;
 
     public Node(T element) {
         this.element = element;
