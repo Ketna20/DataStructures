@@ -207,4 +207,174 @@ public class BinaryTreeTraversals<T> {
         return treeList;
     }
 
+    public Iterator<T> traverseInOrderAsIterator(Node node) {
+        final int expectedNodeCount = size();
+        final Deque<Node> stack = new ArrayDeque<>();
+        stack.push(node);
+        return new Iterator<T>() {
+            Node cursor = node;
+            @Override
+            public boolean hasNext() {
+                if(expectedNodeCount != nodeCount) {
+                    throw new ConcurrentModificationException();
+                }
+                return node != null && !stack.isEmpty();
+            }
+
+            @Override
+            public T next() {
+                if(expectedNodeCount != nodeCount) {
+                    throw new ConcurrentModificationException();
+                }
+                while (cursor != null && cursor.left != null) {
+                    stack.push(cursor.left);
+                    cursor = cursor.left;
+                }
+                Node current = stack.pop();
+                if(current.right != null) {
+                    stack.push(current.right);
+                    cursor = current.right;
+                }
+
+                return (T) current.element;
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException("Removing a node is not supported.");
+            }
+        };
+    }
+
+    public Iterator<T> traversePreOrderAsIterator(Node node) {
+        final int expectedNodeCount = size();
+        final Deque<Node> stack = new ArrayDeque<>();
+        stack.push(node);
+        return new Iterator<T>() {
+            @Override
+            public boolean hasNext() {
+                if(expectedNodeCount != nodeCount) {
+                    throw new ConcurrentModificationException();
+                }
+                return node != null && !stack.isEmpty();
+            }
+
+            @Override
+            public T next() {
+                if(expectedNodeCount != nodeCount) {
+                    throw new ConcurrentModificationException();
+                }
+                Node current = stack.pop();
+                if(current.right != null) {
+                    stack.push(current.right);
+                }
+                if(current.left != null) {
+                    stack.push(current.left);
+                }
+                return (T) current.element;
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException("Removal of node is not supported.");
+            }
+        };
+    }
+
+    public Iterator<T> traversePostOrderAsIterator(Node node) {
+        final int expectedNodeCount = size();
+        final Deque<Node> stack_a = new ArrayDeque<>();
+        final Deque<Node> stack_b = new ArrayDeque<>();
+        stack_a.push(node);
+
+        while(!stack_a.isEmpty()){
+            Node node1 = stack_a.pop();
+            if(node1 != null) {
+                stack_b.push(node1);
+                if(node1.left != null) {
+                    stack_a.push(node1.left);
+                }
+                if(node1.right != null) {
+                    stack_a.push(node1.right);
+                }
+            }
+        }
+
+        return new Iterator<T>() {
+            @Override
+            public boolean hasNext() {
+                if(expectedNodeCount != nodeCount) {
+                    throw new ConcurrentModificationException();
+                }
+                return node != null && !stack_b.isEmpty();
+            }
+
+            @Override
+            public T next() {
+                if(expectedNodeCount != nodeCount) {
+                    throw new ConcurrentModificationException();
+                }
+                return (T) stack_b.pop().element;
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
+    }
+
+    public Iterator<T> traverseLevelOrderAsIterator(Node node) {
+        final int expectedNodeCount = size();
+        final Queue<Node> queue = new ArrayDeque<>();
+        queue.offer(node);
+
+        return new Iterator<T>() {
+            @Override
+            public boolean hasNext() {
+                if(expectedNodeCount != nodeCount){
+                    throw new ConcurrentModificationException();
+                }
+                return node != null && !queue.isEmpty();
+            }
+
+            @Override
+            public T next() {
+                if(expectedNodeCount != nodeCount) {
+                    throw new ConcurrentModificationException();
+                }
+                Node current = queue.poll();
+                if(current.left != null) {
+                    queue.offer(current.left);
+                }
+                if(current.right != null){
+                    queue.offer(current.right);
+                }
+                return (T) current.element;
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
+    }
+
+    public Iterator<T> traverseAsIterator(TraversalOrder traversalOrder) {
+        if(size() == 0) {
+            return Collections.emptyIterator();
+        }
+        switch (traversalOrder) {
+            case IN:
+                return traverseInOrderAsIterator(root);
+            case PRE:
+                return traversePreOrderAsIterator(root);
+            case POST:
+                return traversePostOrderAsIterator(root);
+            case LEVEL:
+                return traverseLevelOrderAsIterator(root);
+            default:
+                throw new IllegalArgumentException("Unrecognized Traversal Order.");
+        }
+    }
 }

@@ -5,6 +5,7 @@ package trees.traversals;
 
 import trees.BinaryTree;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -33,7 +34,6 @@ public class TraversalMain {
 //        bt.print(TraversalOrder.IN);
 
         //traversals as list
-
         List<Integer> levelOrderList = new LinkedList<>();
         levelOrderList = bt.traverseAsList(TraversalOrder.LEVEL);
         System.out.println("Traversal LEVEL : ");
@@ -57,6 +57,31 @@ public class TraversalMain {
         List<Integer> inOrderList= bt.traverseAsList(TraversalOrder.IN);
         for (int i : postOrderList) {
             System.out.println(" " + i);
+        }
+
+        //traverse as Iterator
+        Iterator<Integer> intInOrderIterator = bt.traverseAsIterator(TraversalOrder.IN);
+        System.out.println("Traversal IN : ");
+        for (Iterator<Integer> it = intInOrderIterator; it.hasNext(); ) {
+            System.out.println(it.next());
+        }
+
+        Iterator<Integer> intPreOrderIterator = bt.traverseAsIterator(TraversalOrder.PRE);
+        System.out.println("Traversal PRE : ");
+        for (Iterator<Integer> it = intPreOrderIterator; it.hasNext(); ) {
+            System.out.println(it.next());
+        }
+
+        Iterator<Integer> intPostOrderIterator = bt.traverseAsIterator(TraversalOrder.POST);
+        System.out.println("Traversal POST : ");
+        for (Iterator<Integer> it = intPostOrderIterator; it.hasNext(); ) {
+            System.out.println(it.next());
+        }
+
+        Iterator<Integer> intLevelOrderIterator = bt.traverseAsIterator(TraversalOrder.LEVEL);
+        System.out.println("Traversal LEVEL : ");
+        for (Iterator<Integer> it = intLevelOrderIterator; it.hasNext(); ) {
+            System.out.println(it.next());
         }
     }
 }
