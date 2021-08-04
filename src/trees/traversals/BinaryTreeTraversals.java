@@ -3,9 +3,6 @@ package trees.traversals;
  * ketnakhalasi created on 8/1/21
  * */
 
-
-import sun.awt.image.ImageWatched;
-
 import java.util.*;
 
 public class BinaryTreeTraversals<T> {
@@ -377,4 +374,5 @@ public class BinaryTreeTraversals<T> {
                 throw new IllegalArgumentException("Unrecognized Traversal Order.");
         }
     }
+
 }
