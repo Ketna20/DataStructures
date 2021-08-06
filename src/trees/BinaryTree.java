@@ -4,7 +4,7 @@ package trees;
  * */
 
 public class BinaryTree {
-    Node root;
+    public Node root;
 
     public BinaryTree(int key) {
         root = new Node(key);
@@ -24,4 +24,14 @@ public class BinaryTree {
 
         return false;
     }
+
+    public void insertLeftChild(Node node, int data) {
+        Node newNode = new Node(data);
+        node.left = newNode;
+    }
+    public void insertRightChild(Node node, int data) {
+        Node newNode = new Node(data);
+        node.right = newNode;
+    }
+
 }

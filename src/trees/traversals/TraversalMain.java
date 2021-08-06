@@ -5,9 +5,7 @@ package trees.traversals;
 
 import trees.BinaryTree;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class TraversalMain {
     public static void main(String[] args) {
@@ -20,6 +18,8 @@ public class TraversalMain {
         bt.insert(3);
         bt.insert(44);
         System.out.println("Root " + bt.root() + " and Nodes: " + bt.size());
+
+
 
 //        System.out.println("Traversal LEVEL : ");
 //        bt.print(TraversalOrder.LEVEL);

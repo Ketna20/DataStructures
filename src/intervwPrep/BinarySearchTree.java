@@ -3,11 +3,27 @@ package intervwPrep;
  * ketnakhalasi created on 8/3/21
  * */
 
-
-
 public class BinarySearchTree<T extends Comparable<T>> {
     private Node root;
 
+    private class Node {
+        Node left;
+        Node right;
+        T element;
+
+        public Node(Node left, Node right, T element) {
+            this.left = left;
+            this.right = right;
+            this.element = element;
+        }
+
+        public Node(T element) {
+            this.element = element;
+            this.left = null;
+            this.right = null;
+
+        }
+    }
     public BinarySearchTree(Node root) {
         this.root = root;
     }
@@ -35,11 +51,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
     private boolean isBinarySearchTree(Node node, Integer maxElement, Integer minElement) {
         if (node == null) {
             return true;
-        } else if(minElement != null && minElement.compareTo(node.element) <= 0
-        || maxElement != null && maxElement.compareTo(node.element) > 0) {
+        } else if(minElement != null && minElement.compareTo((Integer) node.element) <= 0
+        || maxElement != null && maxElement.compareTo((Integer) node.element) > 0) {
             return false;
-        } else if ((!isBinarySearchTree(node.left, minElement, node.element))
-        || (!isBinarySearchTree(node.right, node.element, maxElement))){
+        } else if ((!isBinarySearchTree(node.left, minElement, (Integer) node.element))
+        || (!isBinarySearchTree(node.right, (Integer) node.element, maxElement))){
             return false;
         }
         return true;
@@ -66,5 +82,22 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
 
         return search(root.right, element);
+    }
+
+    public void insert(T element) {
+        root = insertNode(root, element);
+    }
+
+    private Node insertNode(Node root, T element) {
+        /* If the tree is empty,
+           return a new node */
+        if (root == null) {
+            root = new Node((Integer) element);
+            return root;
+        }
+        /* Otherwise, recur down the tree */
+        if(element < root.element) {
+
+        }
     }
 }
