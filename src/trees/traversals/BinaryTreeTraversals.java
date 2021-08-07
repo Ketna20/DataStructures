@@ -9,6 +9,24 @@ public class BinaryTreeTraversals<T> {
     private Node root = null;
     private int nodeCount;
 
+    private class Node {
+        Node left;
+        Node right;
+        T element;
+
+        private Node(T element) {
+            this.element = element;
+            this.left = null;
+            this.right = null;
+        }
+
+        public Node(Node left, Node right, T element) {
+            this.left = left;
+            this.right = right;
+            this.element = element;
+        }
+    }
+
     public T root() {
         if(root == null) {
             return null;
