@@ -8,20 +8,20 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class TopViewOfTree<T> {
-    Node root;
+    //Node root;
     public static void main(String[] args) {
 
 
     }
 
-    public void insert(int[] nums) {
-        for(int i : nums) {
-            if(root == null) {
-                root = new Node(i);
-            }
-
-
-        }
-    }
+//    public void insert(int[] nums) {
+//        for(int i : nums) {
+//            if(root == null) {
+//                root = new Node(i);
+//            }
+//
+//
+//        }
+//    }
 
 }

@@ -9,15 +9,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
     private class Node {
         Node left;
         Node right;
-        T element;
+        int element;
 
-        public Node(Node left, Node right, T element) {
+        public Node(Node left, Node right, int element) {
             this.left = left;
             this.right = right;
             this.element = element;
         }
 
-        public Node(T element) {
+        public Node(int element) {
             this.element = element;
             this.left = null;
             this.right = null;
@@ -84,11 +84,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return search(root.right, element);
     }
 
-    public void insert(T element) {
+    public void insert(int element) {
         root = insertNode(root, element);
     }
 
-    private Node insertNode(Node root, T element) {
+    private Node insertNode(Node root, int element) {
         /* If the tree is empty,
            return a new node */
         if (root == null) {
@@ -97,7 +97,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
         /* Otherwise, recur down the tree */
         if(element < root.element) {
-
+            root = insertNode(root.left, element);
+        } else if (element >= root.element) {
+            root = insertNode(root.right, element);
         }
+        return root;
     }
 }
