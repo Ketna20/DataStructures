@@ -5,7 +5,15 @@ package trees.traversals;
 
 import java.time.Duration;
 import java.time.LocalTime;
-
+/* An airport with single runway receives landing requests from airplane.
+The request contains (landing time, minutes to complete the procedure).
+Design a BST for this landing system. If the request comes in that
+has overlapping time with existing request, then reject the reservation.
+i.e if it has already a request of(9:56, 5minutes). The another request
+comes for (10:00, 3minutes). It is overlapping since the request at 9:56
+will take 5minutes to complete, so it will end at 10:01, so it cannot
+take another request during that time.
+ */
 public class BSTLandingReservation<Temporal> {
 private Node root = null;
 
