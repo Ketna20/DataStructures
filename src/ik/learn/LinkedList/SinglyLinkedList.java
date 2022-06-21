@@ -15,4 +15,5 @@ public class SinglyLinkedList {
     public SinglyListNode getHead() {
         return head;
     }
+
 }
