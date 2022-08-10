@@ -12,4 +12,8 @@ public class SinglyListNode {
         next = null;
     }
 
+    public SinglyListNode(int x, SinglyListNode next) {
+        value = x;
+        next = next;
+    }
 }
