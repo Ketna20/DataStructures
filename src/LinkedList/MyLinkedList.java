@@ -6,6 +6,8 @@ import javax.swing.*;
 public class MyLinkedList {
     Node head;
 
+
+
     public static void main(String[] args) {
         MyLinkedList list1 = new MyLinkedList();
         MyLinkedList list2 = new MyLinkedList();
@@ -31,6 +33,10 @@ public class MyLinkedList {
 
         int TwoCounts = list1.countOccurance(2);
         System.out.println("TwoCounts: " + TwoCounts);
+
+
+
+
         //int thirdFromEnd = list1.printNthFromEnd(list1.head, 3);
        // System.out.println("3rd from last: " + thirdFromEnd);
         //list1.deleteNodeAtPosition(3);
@@ -55,9 +61,22 @@ public class MyLinkedList {
 //        System.out.println("same Lists: " + sameLists);
     }
 
+    public void insert(int val) {
+        Node newNode = new Node(val);
+        if(this.head == null) {
+            this.head = newNode;
+            return;
+        }
+        while(head.next != null) {
+            head = head.next;
+        }
+        head.next = newNode;
+        return;
+    }
+
     /**
      *
-     * @param head
+     * @param node
      * @return count of nodes from the node till end.
      */
 
@@ -275,4 +294,5 @@ public class MyLinkedList {
         }
         return count;
     }
+
 }
