@@ -1,6 +1,8 @@
 package ik.learn.LinkedList;
 /*
  * ketnakhalasi created on 6/21/22
+ * Leet Code 141. Linked List Cycle
+ * Leet Code 142. Linked List Cycle II
  * */
 
 import java.util.HashMap;
@@ -33,7 +35,7 @@ public class CycleDetection {
 
     //using Hashset
     public static boolean hasLoop(SinglyListNode head) {
-        HashSet<SinglyListNode> hashSet = new HashSet();
+        HashSet<SinglyListNode> hashSet = new HashSet<>();
         while(head != null) {
             if(hashSet.contains(head)) {
                 return true;
