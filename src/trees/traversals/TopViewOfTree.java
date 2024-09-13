@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class TopViewOfTree<T> {
-    //Node root;
+    //ListNode root;
     public static void main(String[] args) {
 
 
@@ -17,7 +17,7 @@ public class TopViewOfTree<T> {
 //    public void insert(int[] nums) {
 //        for(int i : nums) {
 //            if(root == null) {
-//                root = new Node(i);
+//                root = new ListNode(i);
 //            }
 //
 //
