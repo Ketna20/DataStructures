@@ -1,10 +1,8 @@
 package LinkedList;
 
 
-import javax.swing.*;
-
 public class MyLinkedList {
-    Node head;
+    ListNode head;
 
 
 
@@ -12,12 +10,12 @@ public class MyLinkedList {
         MyLinkedList list1 = new MyLinkedList();
         MyLinkedList list2 = new MyLinkedList();
 
-        Node head = new Node(1);
-        Node second = new Node(2);
-        Node third = new Node(3);
-        Node fourth = new Node(2);
-        Node fifth = new Node(5);
-        Node sixth = new Node(2);
+        ListNode head = new ListNode(1);
+        ListNode second = new ListNode(2);
+        ListNode third = new ListNode(3);
+        ListNode fourth = new ListNode(2);
+        ListNode fifth = new ListNode(5);
+        ListNode sixth = new ListNode(2);
 
         list1.head = head;
         head.next = second;
@@ -44,10 +42,10 @@ public class MyLinkedList {
        //System.out.println("deleted node 3");
        // list1.printList();
 
-//        Node n1 = new Node(1);
-//        Node n2 = new Node(2);
-//        Node n3 = new Node(3);
-//        Node n4 = new Node(4);
+//        ListNode n1 = new ListNode(1);
+//        ListNode n2 = new ListNode(2);
+//        ListNode n3 = new ListNode(3);
+//        ListNode n4 = new ListNode(4);
 //
 //        list2.head = n1;
 //        n1.next = n2;
@@ -62,27 +60,27 @@ public class MyLinkedList {
     }
 
     public void insert(int val) {
-        Node newNode = new Node(val);
+        ListNode newListNode = new ListNode(val);
         if(this.head == null) {
-            this.head = newNode;
+            this.head = newListNode;
             return;
         }
         while(head.next != null) {
             head = head.next;
         }
-        head.next = newNode;
+        head.next = newListNode;
         return;
     }
 
     /**
      *
-     * @param node
-     * @return count of nodes from the node till end.
+     * @param listNode
+     * @return count of nodes from the listNode till end.
      */
 
-    public int countNodes(Node node) {
+    public int countNodes(ListNode listNode) {
         int count = 1;
-        Node temp = node;
+        ListNode temp = listNode;
         while (temp.next != null) {
             count++;
             temp = temp.next;
@@ -96,9 +94,9 @@ public class MyLinkedList {
      * @param head
      * @return number of nodes in the loop
      */
-    public int countNodesInLoop (Node head) {
-        Node slow = head;
-        Node fast = head;
+    public int countNodesInLoop (ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
         while (slow != null && fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
@@ -118,7 +116,7 @@ public class MyLinkedList {
      */
 
     // compare two linked lists
-    public static boolean compareLists(Node head1, Node head2) {
+    public static boolean compareLists(ListNode head1, ListNode head2) {
         if (head1 == null && head2 == null) {
             return true;
         } else if (head1 == null || head2 == null) {
@@ -135,7 +133,7 @@ public class MyLinkedList {
     /** * * * * * * * * * * * * * * * * * * * * * * *
      * merge two linked lists * * * * * * * * * * * *
      * * * * * * * * * * * * * * * * * * * * * * *  */
-    public static Node mergeLists(Node head1, Node head2){
+    public static ListNode mergeLists(ListNode head1, ListNode head2){
         if (head1 == null && head2 == null)
             return null;
         else if(head1 == null)
@@ -146,7 +144,7 @@ public class MyLinkedList {
         if(head1.data <= head2.data) {
             head1.next = mergeLists(head1.next, head2);
         } else {
-            Node temp = head2;
+            ListNode temp = head2;
             head2 = head2.next;
             temp.next = head1;
             head1 = temp;
@@ -159,7 +157,7 @@ public class MyLinkedList {
      * prints contents of linked list to the output *
      * * * * * * * * * * * * * * * * * * * * * * * */
     public void printList() {
-        Node n = head;
+        ListNode n = head;
         while(n != null) {
             System.out.println(n.data + " ");
             n = n.next;
@@ -187,12 +185,12 @@ public class MyLinkedList {
     7
      */
 
-    public static int getNth(Node node, int ind)
+    public static int getNth(ListNode listNode, int ind)
     {
         for (int i=1; i < ind; i++) {
-            node = node.next;
+            listNode = listNode.next;
         }
-        return node.data;
+        return listNode.data;
     }
 
     /* Function to find middle element a linked list
@@ -211,10 +209,10 @@ public class MyLinkedList {
       elements.
 
      */
-    int getMiddle(Node head)
+    int getMiddle(ListNode head)
     {
-        Node fast = head;
-        Node slow = head;
+        ListNode fast = head;
+        ListNode slow = head;
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
@@ -224,18 +222,18 @@ public class MyLinkedList {
     }
 
     // Reverse a Linked List
-    Node reverseList(Node head)
+    ListNode reverseList(ListNode head)
     {
         if (head.next == null)
             return head;
-        Node newHead = reverseList(head.next);
+        ListNode newHead = reverseList(head.next);
         head.next.next = head;
         head.next = null;
         return newHead;
     }
 
     public void deleteNodeAtPosition (int position) {
-        Node temp = head;
+        ListNode temp = head;
 
         if (position == 0) {
             head = temp.next;
@@ -249,7 +247,7 @@ public class MyLinkedList {
            return;
        }
 
-       Node next = temp.next.next;
+       ListNode next = temp.next.next;
        temp.next = next;
 
     }
@@ -257,12 +255,12 @@ public class MyLinkedList {
     /****
      * get Nth node from last of a linked list
      */
-    public int printNthFromEnd (Node head, int n) {
+    public int printNthFromEnd (ListNode head, int n) {
         int data = 0, len = 0;
         if (head == null)
             return data;
 
-        Node temp = head;
+        ListNode temp = head;
 
         while (temp != null) {
             temp = temp.next;
@@ -285,7 +283,7 @@ public class MyLinkedList {
     counts the number of times a given int occurs in a Linked List
      */
     public int countOccurance (int search_for) {
-        Node current = head;
+        ListNode current = head;
         int count =0;
         while (current != null) {
             if (current.data == search_for)

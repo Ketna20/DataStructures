@@ -74,7 +74,7 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
         return false;
     }
 
-    // Delete a Node -- given head of list and position to delete node
+    // Delete a ListNode -- given head of list and position to delete node
     public Node<AnyType> deleteNodeAtSpecificPosition(Node<AnyType> head, int position) {
         if (position == 0) {
             Node<AnyType> newHead = head.next;
@@ -143,7 +143,7 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
          return 1 + getLengthRecursively(head.next);
     }
 
-    //Insert Node at specified position
+    //Insert ListNode at specified position
     public Node<AnyType> insertAtSpecificPosition(Node<AnyType> head, AnyType data, int position) {
         if(head == null) {
             return new Node<AnyType>(data, null);
@@ -463,7 +463,7 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
      * 3rd list head to 2nd list tail
      */
     /*************
-     * Node class
+     * ListNode class
      */
     private static class Node<AnyType> {
         private AnyType data;

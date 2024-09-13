@@ -31,6 +31,12 @@ public class MinBucketToFeedHamsters {
         System.out.println(" minimum buckets needed: " + buckets);
     }
 
+    /**
+     * Time complexity O(n)
+     * Space complexity O(1)
+     * @param hamsters
+     * @return
+     */
     public static int minimumBuckets(String hamsters) {
         if(hamsters.equals("H")) {
             return -1;

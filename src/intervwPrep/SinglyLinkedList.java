@@ -13,7 +13,7 @@ public class SinglyLinkedList {
 
         @Override
         public String toString() {
-            return "Node{" +
+            return "ListNode{" +
                     "data=" + data +
                     '}';
         }

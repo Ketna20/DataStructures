@@ -19,7 +19,7 @@ public class CycleDetection {
         }
         return count;
     }
-
+    // Linear solution
     public static boolean hasCycle(SinglyListNode head) {
         SinglyListNode fast = head;
         SinglyListNode slow = head;
@@ -33,7 +33,7 @@ public class CycleDetection {
         return false;
     }
 
-    //using Hashset
+    //using Hashset - external data structure which takes up extra space
     public static boolean hasLoop(SinglyListNode head) {
         HashSet<SinglyListNode> hashSet = new HashSet<>();
         while(head != null) {
