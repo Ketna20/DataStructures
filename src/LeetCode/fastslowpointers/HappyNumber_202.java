@@ -30,6 +30,23 @@ public class HappyNumber_202 {
     }
 
     public static boolean isHappy(int n) {
+        int slow = n;
+        int fast = n;
+        //while loop is not used here because initially slow and
+        //fast pointer will be equal only, so the loop won't run.
+        do {
+            //slow moving one step ahead and fast moving two steps ahead
+            slow = sumOfSquares(slow);
+            fast = sumOfSquares(sumOfSquares(fast));
+        } while (slow != fast);
+
+        //if a cycle exists, then the number is not a happy number
+        //and slow will have a value other than 1
+        return slow == 1;
+    }
+
+
+    public static boolean isHappyUsingHashSet(int n) {
         if(n == 1 || n == -1) return true;
 
         Set<Integer> visit = new HashSet<>();
