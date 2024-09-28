@@ -1,4 +1,4 @@
-package LeetCode;
+package LeetCode.fastslowpointers;
 
 import java.util.HashSet;
 import java.util.Set;
