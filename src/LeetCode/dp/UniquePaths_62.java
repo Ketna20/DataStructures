@@ -2,6 +2,8 @@ package LeetCode.dp;
 
 public class UniquePaths_62 {
 
+    // Time Complexity = O(mn)
+    // Space Complexity = O(mn)
     public int uniquePaths(int m, int n) {
         if (m == 1 || n == 1) return 1;
 
@@ -23,6 +25,20 @@ public class UniquePaths_62 {
 
         return paths[m-1][n-1];
 
+    }
+
+    // using combinatorial formula
+    // Time Complexity = O(min(m,n)
+    // Space Complexity = O(1)
+    public int uniquePathsCombinatorial(int m, int n) {
+        long result = 1;
+        int k = Math.min(m - 1, n - 1);
+
+        for (int i = 1; i <= k; ++i) {
+            result = result * (m + n - 2 - i + 1) / i;
+        }
+
+        return (int) result;
     }
 
 }
