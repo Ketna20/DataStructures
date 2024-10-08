@@ -1,5 +1,9 @@
 package leetcode75;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * You are given an array of strings products and a string searchWord.
  *
