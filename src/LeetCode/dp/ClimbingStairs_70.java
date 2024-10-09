@@ -5,8 +5,12 @@ import java.util.Map;
 
 public class ClimbingStairs_70 {
 
+    public static void main(String[] args) {
+        int steps = climbStairsSpaceOptimization(10);
+        System.out.println(steps);
+    }
 
-    public int climbStairsRecursion(int n) {
+    public static int climbStairsRecursion(int n) {
         if(n == 0 || n == 1) return 1;
 
         return climbStairsRecursion(n-1) + climbStairsRecursion(n-2);
@@ -39,18 +43,20 @@ public class ClimbingStairs_70 {
         return t[n];
     }
 
-    public int climbStairsSpaceOptimization(int n) {
-        if(n == 0 || n == 1) return 1;
+    public static int climbStairsSpaceOptimization(int n) {
+        // space optimization approach
+        if(n == 0 || n == 1)
+            return 1;
+
 
         int prev = 1;
         int current = 1;
-
         for(int i = 2; i <= n; i++) {
             int t = current;
-            current = prev;
+            current += prev;
             prev = t;
-        }
 
+        }
         return current;
     }
 }
